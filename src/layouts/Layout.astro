@@ -13,6 +13,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Integrationsbolaget" />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -37,10 +38,28 @@ const { title } = Astro.props;
 
 			html {
 				background-color: var(--warmGrey);
+				font-family: sans-serif;
 			}
 
 			body {
 				margin: 0;
+			}
+
+			button {
+				height: 3rem;
+				border-radius: 1rem;
+				border: none;
+				cursor: pointer;
+				padding: 0 2rem;
+				box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+			}
+
+			button:hover {
+				opacity: 0.8;
+			}
+
+			button:active {
+				transform: scale(1.02)
 			}
 		</style>
 	</body>

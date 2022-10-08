@@ -4,7 +4,15 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Integrationsbolaget">
 	<header>
-		<!-- <h1>Header Content</h1> -->
+		<a href="/" title="Home">
+			<img
+				alt="Background image of person walking amongst mountains"
+				src="/images/cropped-Integrationsbolaget-Omegapoint-byline_white.png"
+				loading="eager"
+			/>
+		</a>
+
+		<h1>Partnerskap för hållbar systemintegration</h1>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 100 100"
@@ -19,7 +27,13 @@ import Layout from "../layouts/Layout.astro";
 			></polygon>
 		</svg>
 	</header>
-	<main></main>
+	<main>
+		<section>
+			<h2>"Systemintegration för effektiva arbetsflöden och bra affärer"</h2>
+			<p>Integrationsbolaget skapar hållbar, framtidssäkrad systemintegration – från strategi och arkitektur till genomförande, drift och förvaltning. Vi gör det med utgångspunkt från dina specifika behov och mål, för effektiva arbetsflöden och bra affärer. Integrationsbolaget är det vassa och snälla IT-konsultbolaget – och din långsiktiga partner för systemintegration.</p>
+			<button>Till våra erbjudanden</button>
+		</section>
+	</main>
 </Layout>
 
 <style>
@@ -27,9 +41,28 @@ import Layout from "../layouts/Layout.astro";
 		position: relative;
 		height: 600px;
 		background-image: url("/images/IB_start_2.jpeg");
+		background-color: var(--petroleum);
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	header img {
+		width: 15rem;
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+	}
+
+	header h1 {
+		margin: 0;
+		text-align: center;
+		color: white;
+		font-size: 5.9vw;
 	}
 
 	header svg {
@@ -41,6 +74,21 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	main {
+		display: grid;
+	}
+
+	main section {
+		color: var(--petroleum);
+		padding: 5rem 2rem;
+		grid-template-columns: 1fr;
+	}
+
+	main section h2 {
+		font-size: 4.5vw;
+	}
+
+	main section p {
+		line-height: 1.5;
 	}
 
 	@media (max-width: 699px) {
