@@ -11,9 +11,14 @@ import Layout from "../layouts/Layout.astro";
 				loading="eager"
 			/>
 		</a>
+		<svg id="menu" viewBox="0 0 100 80" width="40" height="40">
+			<rect width="100" height="20" rx="8"></rect>
+			<rect y="30" width="100" height="20" rx="8"></rect>
+			<rect y="60" width="100" height="20" rx="8"></rect>
+		</svg>
 
 		<h1>Partnerskap för hållbar systemintegration</h1>
-		<svg
+		<svg id="logo"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 100 100"
 			preserveAspectRatio="none"
@@ -28,13 +33,93 @@ import Layout from "../layouts/Layout.astro";
 		</svg>
 	</header>
 	<main>
-		<section>
-			<h2>"Systemintegration för effektiva arbetsflöden och bra affärer"</h2>
-			<p>Integrationsbolaget skapar hållbar, framtidssäkrad systemintegration – från strategi och arkitektur till genomförande, drift och förvaltning. Vi gör det med utgångspunkt från dina specifika behov och mål, för effektiva arbetsflöden och bra affärer. Integrationsbolaget är det vassa och snälla IT-konsultbolaget – och din långsiktiga partner för systemintegration.</p>
+		<section class="hidden">
+			<h2>
+				"Systemintegration för effektiva arbetsflöden och bra affärer"
+			</h2>
+			<p>
+				Integrationsbolaget skapar hållbar, framtidssäkrad
+				systemintegration - från strategi och arkitektur till
+				genomförande, drift och förvaltning. Vi gör det med utgångspunkt
+				från dina specifika behov och mål, för effektiva arbetsflöden
+				och bra affärer. Integrationsbolaget är det vassa och snälla
+				IT-konsultbolaget - och din långsiktiga partner för
+				systemintegration.
+			</p>
 			<button>Till våra erbjudanden</button>
+		</section>
+		<section style="background-color: var(--lightBlue)">
+			<h2>Vårt erbjudande</h2>
+			<p>
+				Vårt tredelade erbjudande är baserat på mångårig erfarenhet,
+				marknadsledande kompetens, återanvändbara processer och starkt
+				medarbetarengagemang.
+			</p>
+			<div>
+				<div class="hidden">
+					<h3>Integration advisory</h3>
+					<p>
+						En genomtänkt och hållbar integrationsarkitektur och
+						-strategi utgår från företagets behov och övergripande
+						mål. Vi ser till att tekniken är ett stöd för
+						verksamheten och för affären.
+					</p>
+					<button>Läs mer om Integration advisory</button>
+				</div>
+				<div class="hidden">
+					<h3>Integration implementation</h3>
+					<p>
+						Vi jobbar enligt beprövade integrationsmönster för
+						återanvändning och förvaltningsbarhet, enligt
+						processerna på ditt företag eller enligt vår egen
+						kvalitetssäkrade utvecklingsprocess.
+					</p>
+					<button>Läs mer om Integration implementation</button>
+				</div>
+				<div class="hidden">
+					<h3>Integration life cycle management</h3>
+					<p>
+						Vi tar över ägarskapet, förvaltningen och ansvaret för
+						att integrationerna är tillgängliga när du behöver dem -
+						tryggt och effektivt.
+					</p>
+					<button>Läs mer om Integration life cycle management</button
+					>
+				</div>
+			</div>
+		</section>
+		<section class="hidden" style="background-color: var(--petroleum); color: white;">
+			<h2>Jobba hos oss</h2>
+			<p>
+				Vi är ett gäng vassa och snälla konsulter - och vi är alltid på
+				jakt efter fler talanger och kollegor att utvecklas tillsammans
+				med. Nyfiken? Bra, det är vi med!
+			</p>
+			<button>Till karriär</button>
+		</section>
+		<section class="img"></section>
+		<section class="hidden">
+			<h2>Kunder och uppdrag</h2>
+			<p>
+				Våra kunders behov varierar, liksom våra lösningar. Det betyder
+				att inget uppdrag är det andra likt. Men vi är glada och stolta
+				över varenda ett!
+			</p>
+			<button>Till uppdrag</button>
 		</section>
 	</main>
 </Layout>
+
+<script defer is:inline>
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			entry.target.classList.toggle("show", entry.isIntersecting);
+		});
+	});
+
+	const hiddenElements = document.querySelectorAll(".hidden");
+	hiddenElements.forEach((el) => observer.observe(el));
+</script>
 
 <style>
 	header {
@@ -52,7 +137,7 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	header img {
-		width: 15rem;
+		width: 10rem;
 		position: absolute;
 		top: 1rem;
 		left: 1rem;
@@ -65,7 +150,7 @@ import Layout from "../layouts/Layout.astro";
 		font-size: 5.9vw;
 	}
 
-	header svg {
+	header #logo {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
@@ -73,12 +158,29 @@ import Layout from "../layouts/Layout.astro";
 		fill: var(--warmGrey);
 	}
 
+	header #logo polygon {
+		filter: drop-shadow(3px 0px 2px rgba(0, 0, 0, 0.7));
+	}
+
+	header #menu {
+		width: 1.5rem;
+		position: absolute;
+		top: 1rem;
+		right: 1.5rem;
+		fill: white;
+		cursor: pointer;
+	}
+
+	header #menu:active {
+		transform: scale(1.05);
+	}
+
 	main {
 		display: grid;
 	}
 
 	main section {
-		color: var(--petroleum);
+		/* color: var(--petroleum); */
 		padding: 5rem 2rem;
 		grid-template-columns: 1fr;
 	}
@@ -89,6 +191,23 @@ import Layout from "../layouts/Layout.astro";
 
 	main section p {
 		line-height: 1.5;
+	}
+
+	main section > div {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		column-gap: 30px;
+		row-gap: 30px;
+	}
+
+	.img {
+		padding: 0;
+		width: 100%;
+		height: 300px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-image: url("/images/IB_jobba-hos-oss_2-e1643704747270-1024x588.jpeg");
 	}
 
 	@media (max-width: 699px) {
